@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'VAlert_Example' do
+  pod 'VAlert', :path => '../'
+
+  target 'VAlert_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
