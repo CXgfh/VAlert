@@ -1,13 +1,10 @@
 use_frameworks!
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'VAlert_Example' do
   pod 'VAlert', :path => '../'
-
-  target 'VAlert_Tests' do
-    inherit! :search_paths
-
-    
-  end
+  pod 'Util_V'
+  pod 'ContentSizeView'
+  pod 'SnapKit'
 end
