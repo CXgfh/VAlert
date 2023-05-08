@@ -7,4 +7,5 @@ target 'VAlert_Example' do
   pod 'Util_V'
   pod 'ContentSizeView'
   pod 'SnapKit'
+  pod 'LookinServer'
 end

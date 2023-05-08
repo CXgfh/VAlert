@@ -28,23 +28,37 @@ class ViewController: UIViewController {
 
 extension ViewController {
     @objc private func Tap() {
-        let alert = VAlertViewController(haveTitle: true, haveMessage: true, style: .alert)
-        alert.titleLabel.text = "1"
-        alert.messageLabel.text = "2"
-        //只生效top、bottom
-        alert.contentInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
+        
+        let alert = VAlertViewController(style: .alert)
+        alert.titleLabel.text = "1123175712587125375127835182538125738"
+        alert.messageLabel.attributedText = NSAttributedString(string: "1123175712587125375127835182538125738123123123123123123")
+        alert.headerInsets = .init(top: 8, left: 0, bottom: 8, right: 0)
+        alert.messageSpacing = 8
+        alert.textInsets = .init(top: 8, left: 0, bottom: 8, right: 0)
+        alert.textSpacing = 4
+        alert.bottomInsets = .init(top: 4, left: 0, bottom: 0, right: 0)
+        
         //context separator
-        alert.contextSeparatorView.backgroundColor = .random
-        alert.contextSeparatorHeight = 1
+        alert.separatorView.backgroundColor = .random
+        alert.separatorHeight = 1
         //action separator
-        alert.actionSeparatorHeight = 1
+        alert.actionSeparatorHeight = 20
+        alert.actionSeparatorWidth = 1
         alert.actionSeparatorBackgroundColor = .random
         
+        
         alert.addText(VDefaultAlertText(title: "1", placeholder: "2"))
-        alert.addAction(VDefaultAlertAction(title: "1", handler: { action, data in
-            print(data)
+        alert.addText(VDefaultAlertText(title: "1", placeholder: "2"))
+        alert.addText(VDefaultAlertText(title: "1", placeholder: "2"))
+        alert.addText(VDefaultAlertText(title: "1", placeholder: "2"))
+        alert.addText(VDefaultAlertText(title: "1", placeholder: "2"))
+        alert.addAction(VDefaultAlertAction(title: "1", handler: { action in
+            for text in alert.textFields {
+                print(text.title, text.content)
+            }
         }))
         alert.addAction(VDefaultAlertAction(title: "2"))
+        alert.addAction(VDefaultAlertAction(title: "3"))
         
         alert.modalTransitionStyle = .crossDissolve
         alert.modalPresentationStyle = .custom

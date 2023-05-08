@@ -177,12 +177,14 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ContentSizeView/ContentSizeView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Util_V/Util_V.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/VAlert/VAlert.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ContentSizeView/ContentSizeView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Util_V/Util_V.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/VAlert/VAlert.framework"

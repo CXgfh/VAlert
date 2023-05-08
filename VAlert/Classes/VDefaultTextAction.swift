@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Util_V
 
+
 public protocol VAlertText: UIView {
     var actionHeight: CGFloat { get }
     var title: String { get }
@@ -25,12 +26,13 @@ public class VDefaultAlertText: UIView, VAlertText {
         return textFiled.text ?? ""
     }
     
-    public var actionHeight: CGFloat = 44
+    public var actionHeight: CGFloat = 48
     
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
         return label
     }()
     
@@ -43,7 +45,7 @@ public class VDefaultAlertText: UIView, VAlertText {
     
     public lazy var textFiled: UITextField = {
         let textFiled = UITextField()
-        textFiled.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        textFiled.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         textFiled.textColor = .black
         textFiled.keyboardType = .default
         textFiled.returnKeyType = .default
@@ -57,11 +59,19 @@ public class VDefaultAlertText: UIView, VAlertText {
     }()
 
     
-    public init(title: String, placeholder: String) {
+    public init(title: String,
+                placeholder: String,
+                titleWidth: CGFloat? = nil) {
         super.init(frame: .zero)
         titleLabel.text = title
         textFiled.placeholder = placeholder
-        setupUI()
+        var width: CGFloat
+        if let titleWidth = titleWidth {
+            width = titleWidth
+        } else {
+            width = title.stringWidth(font: titleLabel.font)
+        }
+        setupUI(titleWidth: width)
     }
     
     required init?(coder: NSCoder) {
@@ -70,14 +80,14 @@ public class VDefaultAlertText: UIView, VAlertText {
 }
 
 extension VDefaultAlertText {
-    private func setupUI() {
+    private func setupUI(titleWidth: CGFloat) {
         self.addSubviews(titleLabel, contenView)
         titleLabel.snp.makeConstraints { make in
             make.left.centerY.equalToSuperview()
         }
         
         contenView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(2)
+            make.top.bottom.equalToSuperview().inset(4)
             make.height.equalTo(40)
             make.left.equalTo(titleLabel.snp.right).offset(8)
             make.right.equalToSuperview()

@@ -12,7 +12,7 @@ public protocol VAlertAction: UIButton {
     var handler: VActionHandler? { get set }
 }
 
-public typealias VActionHandler = (_ action: VAlertAction, _ data: [String: String])->Void
+public typealias VActionHandler = (_ action: VAlertAction)->Void
 
 public class VDefaultAlertAction: UIButton, VAlertAction {
     public var actionHeight: CGFloat = 44
